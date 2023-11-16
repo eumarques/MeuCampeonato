@@ -1,6 +1,6 @@
 ﻿namespace MeuCampeonato.Core.Entities
 {
-    public class Campeonato
+    public class Campeonato : BaseEntity
     {
         public Campeonato(string nomeComapeonato, DateTime dataCampeonato,
             string primeiroLugar, string segundoLugar, string terceiroLugar, string quantoLugar)
@@ -14,7 +14,6 @@
             QuantoLugar = quantoLugar;
         }
 
-        public int CampeonatoId { get; private set; }
         public string NomeComapeonato { get; private set; }
         public DateTime DataCampeonato { get; private set; }
         public string PrimeiroLugar { get; private set; }

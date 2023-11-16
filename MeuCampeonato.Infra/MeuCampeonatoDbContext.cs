@@ -13,8 +13,6 @@ namespace MeuCampeonato.Infra
         public DbSet<Campeonato> Campeonatos { get; set; }
         public DbSet<Time> Times { get; set; }
         public DbSet<User> Users { get; set; }
-        
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

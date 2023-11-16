@@ -1,16 +1,15 @@
 ﻿namespace MeuCampeonato.Core.Entities
 {
-    public class Time
+    public class Time : BaseEntity
     {
-        public Time(string nome, int pontuacao, int gols, DateTime dataInscricao)
+        public Time(string nome, DateTime dataInscricao)
         {
             NomeTime = nome;
-            Pontuacao = pontuacao;
-            Gols = gols;
+            Pontuacao = 0;
+            Gols = 0;
             DataInscricao = dataInscricao;
         }
 
-        public int TimeId { get; private set; }
         public string NomeTime { get; private set; }
         public int Pontuacao { get; private set; }
         public int Gols { get; private set; }

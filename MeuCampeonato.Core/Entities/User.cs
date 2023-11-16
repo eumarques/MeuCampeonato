@@ -1,6 +1,6 @@
 ﻿namespace MeuCampeonato.Core.Entities
 {
-    public class User
+    public class User : BaseEntity
     {
         public User(string nomeCompleto, string email, DateTime dataNascimento, string senha, string funcao)
         {

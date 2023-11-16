@@ -1,4 +1,7 @@
+using MeuCampeonato.Core.Entities;
+using MeuCampeonato.Core.Repositories;
 using MeuCampeonato.Infra;
+using MeuCampeonato.Infra.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,8 +14,13 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // conexao com a base
-var connectionString = builder.Configuration.GetConnectionString("TestTradeCs");
+var connectionString = builder.Configuration.GetConnectionString("TradeCs");
 builder.Services.AddDbContext<MeuCampeonatoDbContext>(options => options.UseSqlServer(connectionString));
+
+//Repository
+builder.Services.AddScoped<IRepository<User>, UserRepository>();
+builder.Services.AddScoped<IRepository<Campeonato>, CampeonatoRepository>();
+builder.Services.AddScoped<IRepository<Time>, TimeRepository>();
 
 var app = builder.Build();
 
