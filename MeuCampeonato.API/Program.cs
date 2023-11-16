@@ -1,3 +1,4 @@
+using MeuCampeonato.Application.Commands.Time.CriarTime;
 using MeuCampeonato.Core.Entities;
 using MeuCampeonato.Core.Repositories;
 using MeuCampeonato.Infra;
@@ -21,6 +22,9 @@ builder.Services.AddDbContext<MeuCampeonatoDbContext>(options => options.UseSqlS
 builder.Services.AddScoped<IRepository<User>, UserRepository>();
 builder.Services.AddScoped<IRepository<Campeonato>, CampeonatoRepository>();
 builder.Services.AddScoped<IRepository<Time>, TimeRepository>();
+
+//MediatR
+builder.Services.AddMediatR(x => x.RegisterServicesFromAssemblies(typeof(CriarTimeCommand).Assembly));
 
 var app = builder.Build();
 

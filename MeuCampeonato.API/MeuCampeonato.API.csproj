@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MeuCampeonato.Application\MeuCampeonato.Application.csproj" />
     <ProjectReference Include="..\MeuCampeonato.Infra\MeuCampeonato.Infra.csproj" />
   </ItemGroup>
 
