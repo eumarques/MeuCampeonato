@@ -2,9 +2,9 @@
 {
     public class Time : BaseEntity
     {
-        public Time(string nome, DateTime dataInscricao)
+        public Time(string nomeTime, DateTime dataInscricao)
         {
-            NomeTime = nome;
+            NomeTime = nomeTime;
             Pontuacao = 0;
             Gols = 0;
             DataInscricao = dataInscricao;
