@@ -2,6 +2,10 @@
 {
     public class Campeonato : BaseEntity
     {
+        public Campeonato()
+        {
+        }
+
         public Campeonato(string nomeComapeonato, DateTime dataCampeonato,
             string primeiroLugar, string segundoLugar, string terceiroLugar, string quantoLugar)
         {
