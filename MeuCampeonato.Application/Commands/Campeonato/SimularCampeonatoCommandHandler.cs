@@ -83,7 +83,7 @@ namespace MeuCampeonato.Application.Commands.Campeonato
             {
                 var classificadosParaFinal = classificados.Concat(desclassificados).ToList();
                 return classificadosParaFinal;
-                
+
             }
 
             return classificados;
@@ -141,14 +141,12 @@ namespace MeuCampeonato.Application.Commands.Campeonato
         }
         private static Core.Entities.Time Desempate(Core.Entities.Time primeiroTime, Core.Entities.Time segundoTime)
         {
-            if (primeiroTime.DataInscricao < segundoTime.DataInscricao)
+            if (primeiroTime.Pontuacao != segundoTime.Pontuacao)
             {
-                return primeiroTime;
+                return primeiroTime.Pontuacao > segundoTime.Pontuacao ? primeiroTime : segundoTime;
             }
-            else
-            {
-                return segundoTime;
-            }
+
+            return primeiroTime.DataInscricao < segundoTime.DataInscricao ? primeiroTime : segundoTime;
         }
     }
 }
