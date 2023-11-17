@@ -14,7 +14,7 @@ namespace MeuCampeonato.Application.Commands.Time.CriarTime
 
         public async Task<int> Handle(CriarTimeCommand request, CancellationToken cancellationToken)
         {
-            var time = new Core.Entities.Time(request.NomeTime,request.DataInscricao);
+            var time = new Core.Entities.Time(request.NomeTime);
 
             await _timeRepository.AdicionarAsync(time);
 

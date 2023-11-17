@@ -2,17 +2,27 @@
 {
     public class Time : BaseEntity
     {
-        public Time(string nomeTime, DateTime dataInscricao)
+        public Time(string nomeTime)
         {
             NomeTime = nomeTime;
             Pontuacao = 0;
-            Gols = 0;
-            DataInscricao = dataInscricao;
+            DataInscricao = DateTime.Now;
         }
 
         public string NomeTime { get; private set; }
         public int Pontuacao { get; private set; }
-        public int Gols { get; private set; }
+
         public DateTime DataInscricao { get; private set; }
+
+
+        public void AdicionarPontos(int pontuacao)
+        {
+            Pontuacao = pontuacao;
+        }
+
+        public void RemoverPontos(int pontuacao)
+        {
+            Pontuacao -= pontuacao;
+        }
     }
 }

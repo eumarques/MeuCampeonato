@@ -2,20 +2,12 @@
 {
     public class Campeonato : BaseEntity
     {
-        public Campeonato()
+        public Campeonato(string nomeComapeonato)
         {
-        }
 
-        public Campeonato(string nomeComapeonato, DateTime dataCampeonato,
-            string primeiroLugar, string segundoLugar, string terceiroLugar, string quantoLugar)
-        {
-            
             NomeComapeonato = nomeComapeonato;
-            DataCampeonato = dataCampeonato;
-            PrimeiroLugar = primeiroLugar;
-            SegundoLugar = segundoLugar;
-            TerceiroLugar = terceiroLugar;
-            QuantoLugar = quantoLugar;
+            DataCampeonato = DateTime.Now;
+
         }
 
         public string NomeComapeonato { get; private set; }
@@ -24,5 +16,23 @@
         public string SegundoLugar { get; private set; }
         public string TerceiroLugar { get; private set; }
         public string QuantoLugar { get; private set; }
+
+        public void AddPrimeiroLugar(string nome)
+        {
+            PrimeiroLugar = nome;
+        }
+
+        public void AddSegundoLugar(string nome)
+        {
+            SegundoLugar = nome;
+        }
+        public void AddTerceiroLugar(string nome)
+        {
+            TerceiroLugar = nome;
+        }
+        public void AddQuantoLugar(string nome)
+        {
+            QuantoLugar = nome;
+        }
     }
 }

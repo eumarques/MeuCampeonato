@@ -4,6 +4,7 @@ using MeuCampeonato.Infra;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MeuCampeonato.Infra.Persistence.Migrations
 {
     [DbContext(typeof(MeuCampeonatoDbContext))]
-    partial class MeuCampeonatoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231117031421_RemoveGolMigrations")]
+    partial class RemoveGolMigrations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

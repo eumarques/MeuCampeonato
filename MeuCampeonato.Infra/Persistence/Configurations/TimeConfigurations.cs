@@ -13,7 +13,6 @@ namespace MeuCampeonato.Infra.Persistence.Configurations
             builder.Property(e => e.Id).HasColumnName("TimeId");
             builder.Property(e => e.NomeTime).HasColumnName("NomeTime");
             builder.Property(e => e.Pontuacao).HasColumnName("Pontuacao");
-            builder.Property(e => e.Gols).HasColumnName("Gols");
             builder.Property(e => e.DataInscricao).HasColumnName("DataInscricao");
         }
     }
