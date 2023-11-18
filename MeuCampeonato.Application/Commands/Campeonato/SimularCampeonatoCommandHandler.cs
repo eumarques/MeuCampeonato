@@ -16,10 +16,11 @@ namespace MeuCampeonato.Application.Commands.Campeonato
 
         public async Task<int> Handle(SimularCampeonatoCommand request, CancellationToken cancellationToken)
         {
-            var campeonato = new Core.Entities.Campeonato(request.NomeCampeonato);
+            var campeonato = new Core.Entities.Campeonato(request.nomeComapeonato);
 
             // fazer tratamento nas lista deve ter no minimo 8 itens
-            var allTime = new List<Core.Entities.Time>(request.times);
+            var allTime = new List<Core.Entities.Time>(request.Times);
+
 
             var oitoTimesAleatorios = SelecionarOitoTimesAleatorios(allTime);
 

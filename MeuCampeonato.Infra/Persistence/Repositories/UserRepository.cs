@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MeuCampeonato.Infra.Persistence.Repositories
 {
-    public class UserRepository : IRepository<User>
+    public class UserRepository : IUserRepository
     {
         private readonly MeuCampeonatoDbContext _dbContext;
 
@@ -42,6 +42,13 @@ namespace MeuCampeonato.Infra.Persistence.Repositories
         public async Task<List<User>> BuscarTodosAsync()
         {
             return await _dbContext.Users.ToListAsync();
+        }
+
+        public async Task<User> ObterUsuarioPorEmailESenhaAsync(string email, string senhaHash)
+        {
+            return await _dbContext
+                .Users
+                .SingleOrDefaultAsync(u => u.Email == email && u.Senha == senhaHash);
         }
     }
 }

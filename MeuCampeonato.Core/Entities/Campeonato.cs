@@ -7,7 +7,6 @@
 
             NomeComapeonato = nomeComapeonato;
             DataCampeonato = DateTime.Now;
-
         }
 
         public string NomeComapeonato { get; private set; }

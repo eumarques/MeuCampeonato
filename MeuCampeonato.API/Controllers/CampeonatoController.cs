@@ -1,8 +1,7 @@
 ﻿using MediatR;
 using MeuCampeonato.Application.Commands.Campeonato;
-using MeuCampeonato.Application.Commands.Time.CriarTime;
-using MeuCampeonato.Application.Queries.BuscarTime.BuscarTimePorId;
 using MeuCampeonato.Application.Queries.Campeonato.BuscarPorId;
+using MeuCampeonato.Application.Queries.Campeonato.BuscarTodos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MeuCampeonato.API.Controllers
@@ -16,6 +15,16 @@ namespace MeuCampeonato.API.Controllers
         public CampeonatoController(IMediator mediator)
         {
             _mediator = mediator;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var getAllQuery = new BuscarTodosCampeonatoQuery();
+
+            var campeonatos = await _mediator.Send(getAllQuery);
+
+            return Ok(campeonatos);
         }
 
         [HttpGet("{id}")]
@@ -37,9 +46,13 @@ namespace MeuCampeonato.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] SimularCampeonatoCommand command)
         {
-            var id = await _mediator.Send(command);
+            var campeonatoId = await _mediator.Send(command);
 
-            return CreatedAtAction(nameof(GetById), new { id = id }, command);
+            if (campeonatoId == null)
+            {
+                return NotFound();
+            }
+            return Ok(campeonatoId);
         }
 
 

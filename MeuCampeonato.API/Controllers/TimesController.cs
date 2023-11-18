@@ -16,6 +16,8 @@ namespace MeuCampeonato.API.Controllers
             _mediator = mediator;
         }
 
+
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
