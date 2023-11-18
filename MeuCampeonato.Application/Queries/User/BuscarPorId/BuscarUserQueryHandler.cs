@@ -22,7 +22,7 @@ namespace MeuCampeonato.Application.Queries.User.BuscarPorId
                 return null;
             }
 
-            return new UserViewModel(user.NomeCompleto, user.Email);
+            return new UserViewModel(user.Id, user.NomeCompleto, user.Email);
         }
     }
 }

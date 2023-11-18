@@ -1,7 +1,9 @@
 ﻿using MediatR;
 using MeuCampeonato.Application.Commands.User.CriarUser;
 using MeuCampeonato.Application.Commands.User.LoginUser;
+using MeuCampeonato.Application.Queries.Time.BuscarTodos;
 using MeuCampeonato.Application.Queries.User.BuscarPorId;
+using MeuCampeonato.Application.Queries.User.BuscarTodos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -32,6 +34,16 @@ namespace MeuCampeonato.API.Controllers
             }
 
             return Ok(user);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var buscarTodosTimesQuery = new BuscarTodosUserQuery();
+
+            var users = await _mediator.Send(buscarTodosTimesQuery);
+
+            return Ok(users);
         }
 
 
