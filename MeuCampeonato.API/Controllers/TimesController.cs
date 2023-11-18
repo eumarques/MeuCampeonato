@@ -1,6 +1,8 @@
 ﻿using MediatR;
 using MeuCampeonato.Application.Commands.Time.CriarTime;
 using MeuCampeonato.Application.Queries.BuscarTime.BuscarTimePorId;
+using MeuCampeonato.Application.Queries.Campeonato.BuscarTodos;
+using MeuCampeonato.Application.Queries.Time.BuscarTodos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MeuCampeonato.API.Controllers
@@ -31,6 +33,16 @@ namespace MeuCampeonato.API.Controllers
             }
 
             return Ok(time);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var buscarTodosTimesQuery = new BuscarTodosTimesQuery();
+
+            var times = await _mediator.Send(buscarTodosTimesQuery);
+
+            return Ok(times);
         }
 
         [HttpPost]

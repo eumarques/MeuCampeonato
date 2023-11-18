@@ -1,7 +1,10 @@
+using FluentValidation;
 using FluentValidation.AspNetCore;
+using MeuCampeonato.API.Filters;
 using MeuCampeonato.Application.Commands.Time.CriarTime;
 using MeuCampeonato.Application.Services;
 using MeuCampeonato.Application.Validators;
+using MeuCampeonato.Application.Validators.User;
 using MeuCampeonato.Core.Entities;
 using MeuCampeonato.Core.Repositories;
 using MeuCampeonato.Infra;
@@ -18,10 +21,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 //FluentValidator
-builder.Services.AddControllers()
-    .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<UserCommandValidator>());
-
-
+builder.Services.AddControllers(options => options.Filters.Add(typeof(ValidationFilter)));
+builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
+builder.Services.AddValidatorsFromAssemblyContaining<UserCommandValidator>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

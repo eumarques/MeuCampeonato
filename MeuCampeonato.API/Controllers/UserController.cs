@@ -20,7 +20,6 @@ namespace MeuCampeonato.API.Controllers
 
 
         [HttpGet("{id}")]
-
         public async Task<IActionResult> GetById(int id)
         {
             var query = new BuscarUserQuery(id);
@@ -40,6 +39,10 @@ namespace MeuCampeonato.API.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Post([FromBody] CriarUsuarioCommand command)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             var id = await _mediator.Send(command);
 
             return CreatedAtAction(nameof(GetById), new { id = id }, command);
