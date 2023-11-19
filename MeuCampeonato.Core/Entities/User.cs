@@ -18,6 +18,11 @@
         public bool Ativo { get; set; }
         public string Senha { get; private set; }
         public string Funcao { get; private set; }
+
+        public void Atualizar(string email)
+        {
+            Email = email;
+        }
     }
 }
 

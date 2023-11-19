@@ -2,6 +2,7 @@
 using MeuCampeonato.Application.Commands.Campeonato;
 using MeuCampeonato.Application.Queries.Campeonato.BuscarPorId;
 using MeuCampeonato.Application.Queries.Campeonato.BuscarTodos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MeuCampeonato.API.Controllers
@@ -18,7 +19,8 @@ namespace MeuCampeonato.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        [Authorize(Roles = "Client")]
+        public async Task<IActionResult> BuscarTodosCampeonatos()
         {
             var getAllQuery = new BuscarTodosCampeonatoQuery();
 
@@ -28,7 +30,8 @@ namespace MeuCampeonato.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        [Authorize(Roles = "Client")]
+        public async Task<IActionResult> BuscarCameponatoPorId(int id)
         {
             var query = new BuscarCampeonatoPorIdQuery(id);
 
@@ -43,7 +46,9 @@ namespace MeuCampeonato.API.Controllers
         }
 
 
-        [HttpPost]
+        [HttpPost("IniciarCampeonato")]
+        [AllowAnonymous]
+        //[Authorize(Roles = "Client")]
         public async Task<IActionResult> Post([FromBody] SimularCampeonatoCommand command)
         {
             var campeonatoId = await _mediator.Send(command);

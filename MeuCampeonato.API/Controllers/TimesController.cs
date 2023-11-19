@@ -1,8 +1,11 @@
 ﻿using MediatR;
+using MeuCampeonato.Application.Commands.Time.AtualizarTime;
 using MeuCampeonato.Application.Commands.Time.CriarTime;
+using MeuCampeonato.Application.Commands.Time.Excluir_Time;
+using MeuCampeonato.Application.Commands.User.DeletarUser;
 using MeuCampeonato.Application.Queries.BuscarTime.BuscarTimePorId;
-using MeuCampeonato.Application.Queries.Campeonato.BuscarTodos;
 using MeuCampeonato.Application.Queries.Time.BuscarTodos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MeuCampeonato.API.Controllers
@@ -21,7 +24,8 @@ namespace MeuCampeonato.API.Controllers
 
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        [Authorize(Roles = "Client")]
+        public async Task<IActionResult> BuscarPorId(int id)
         {
             var query = new BuscarTimePorIdQuery(id);
 
@@ -36,7 +40,8 @@ namespace MeuCampeonato.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        [Authorize(Roles = "Client")]
+        public async Task<IActionResult> BuscarTodos()
         {
             var buscarTodosTimesQuery = new BuscarTodosTimesQuery();
 
@@ -46,11 +51,32 @@ namespace MeuCampeonato.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] CriarTimeCommand command)
+        [Authorize(Roles = "Client")]
+        public async Task<IActionResult> CriarTime([FromBody] CriarTimeCommand command)
         {
             var id = await _mediator.Send(command);
 
-            return CreatedAtAction(nameof(GetById), new { id = id }, command);
+            return CreatedAtAction(nameof(BuscarPorId), new { id = id }, command);
+        }
+
+        [HttpPut("AtualizarNomeTime")]
+        [Authorize(Roles = "Client")]
+        public async Task<IActionResult> AtualizarTime([FromBody] AtualizarTimeCommand command)
+        {
+            await _mediator.Send(command);
+
+            return NoContent();
+        }
+
+        [HttpDelete]
+        [Authorize(Roles = "Client")]
+        public async Task<IActionResult> ExcluirTime(int id)
+        {
+            var query = new DeleteTimeCommand(id);
+
+            await _mediator.Send(query);
+
+            return NoContent();
         }
     }
 }

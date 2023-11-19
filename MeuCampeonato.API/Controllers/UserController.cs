@@ -1,7 +1,8 @@
 ﻿using MediatR;
+using MeuCampeonato.Application.Commands.User.AtualizarUser;
 using MeuCampeonato.Application.Commands.User.CriarUser;
+using MeuCampeonato.Application.Commands.User.DeletarUser;
 using MeuCampeonato.Application.Commands.User.LoginUser;
-using MeuCampeonato.Application.Queries.Time.BuscarTodos;
 using MeuCampeonato.Application.Queries.User.BuscarPorId;
 using MeuCampeonato.Application.Queries.User.BuscarTodos;
 using Microsoft.AspNetCore.Authorization;
@@ -22,7 +23,8 @@ namespace MeuCampeonato.API.Controllers
 
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        [Authorize(Roles = "Client")]
+        public async Task<IActionResult> BuscarPorId(int id)
         {
             var query = new BuscarUserQuery(id);
 
@@ -37,7 +39,8 @@ namespace MeuCampeonato.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        [Authorize(Roles = "Client")]
+        public async Task<IActionResult> BuscarTods()
         {
             var buscarTodosTimesQuery = new BuscarTodosUserQuery();
 
@@ -49,15 +52,11 @@ namespace MeuCampeonato.API.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> Post([FromBody] CriarUsuarioCommand command)
+        public async Task<IActionResult> SimuladorDeJogos([FromBody] CriarUsuarioCommand command)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
             var id = await _mediator.Send(command);
 
-            return CreatedAtAction(nameof(GetById), new { id = id }, command);
+            return CreatedAtAction(nameof(BuscarPorId), new { id = id }, command);
         }
 
 
@@ -73,6 +72,26 @@ namespace MeuCampeonato.API.Controllers
             }
 
             return Ok(loginUserviewModel);
+        }
+
+        [HttpPut("Atualizar")]
+        [Authorize(Roles = "Client")]
+        public async Task<IActionResult> AtualizarUser([FromBody] AtualizarCommand command)
+        {
+            await _mediator.Send(command);
+
+            return NoContent();
+        }
+
+        [HttpDelete]
+        [Authorize(Roles = "Client")]
+        public async Task<IActionResult> ExcluirUser(int id)
+        {
+            var query = new DeleteUserCommand(id);
+
+            await _mediator.Send(query);
+
+            return NoContent();
         }
     }
 }

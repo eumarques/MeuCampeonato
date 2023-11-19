@@ -17,6 +17,11 @@ namespace MeuCampeonato.Application.Queries.Campeonato.BuscarPorId
         {
             var campeonato = await _campeonatoRepository.BuscarPorIdAsync(request.Id);
 
+            if (campeonato == null)
+            {
+                return null;
+            }
+
             var campeonatoViewModel = new CampeonatoViewModel(campeonato.Id, campeonato.NomeComapeonato, campeonato.DataCampeonato, campeonato.PrimeiroLugar
                 , campeonato.SegundoLugar, campeonato.TerceiroLugar, campeonato.QuantoLugar);
 

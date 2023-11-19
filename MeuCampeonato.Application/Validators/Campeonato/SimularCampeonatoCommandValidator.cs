@@ -7,7 +7,7 @@ namespace MeuCampeonato.Application.Validators.Campeonato
     {
         public SimularCampeonatoCommandValidator()
         {
-            RuleFor(x => x.nomeComapeonato)
+            RuleFor(x => x.nomeCompeonato)
                 .NotEmpty().WithMessage("O nome do campeonato é obrigatório.")
                 .MinimumLength(5)
                 .MaximumLength(50).WithMessage("O nome do campeonato não pode ter menos que 5 caracteres e mais que 50 caracteres.");

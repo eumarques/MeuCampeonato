@@ -36,7 +36,7 @@ namespace MeuCampeonato.Infra.Persistence.Repositories
 
         public async Task RemoverAsync(int id)
         {
-            var entity = await _dbContext.Times.FindAsync(id);
+            var entity = await _dbContext.Times.FirstOrDefaultAsync(x => x.Id == id);
             if (entity != null)
             {
                 _dbContext.Times.Remove(entity);

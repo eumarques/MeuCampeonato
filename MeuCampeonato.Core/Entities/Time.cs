@@ -17,7 +17,12 @@
 
         public void AdicionarPontos(int pontuacao)
         {
-            Pontuacao = pontuacao;
+            Pontuacao += pontuacao;
+        }
+
+        public void AtualizarNome(string nameTime)
+        {
+            NomeTime = nameTime;
         }
 
         public void RemoverPontos(int pontuacao)
