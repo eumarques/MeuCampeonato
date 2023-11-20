@@ -1,0 +1,926 @@
+{
+	"info": {
+		"_postman_id": "d073465a-f88b-4cc4-8a66-2278964952ff",
+		"name": "Meu Campeonato",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31222763"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Criar Usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nomeCompleto\": \"Tiago Marques\",\r\n  \"email\": \"Tiago@gmail.com\",\r\n  \"dataNascimento\": \"1995-06-26T05:33:10.955Z\",\r\n  \"senha\": \"Senha1!@#\",\r\n  \"funcao\": \"Client\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7169/api/user",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7169",
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "exemplo de dados para criar usuario",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nomeCompleto\": \"Tiago Marques\",\r\n  \"email\": \"tiagomarques@gmail.com\",\r\n  \"dataNascimento\": \"2023-11-17T16:27:34.618Z\",\r\n  \"senha\": \"NovaSenha1!\",\r\n  \"funcao\": \"Client\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7169/api/user",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7169",
+									"path": [
+										"api",
+										"user"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 18 Nov 2023 16:40:15 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Location",
+									"value": "https://localhost:7169/api/user/1"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"nomeCompleto\": \"Tiago Marques\",\n    \"email\": \"tiagomarques@gmail.com\",\n    \"dataNascimento\": \"2023-11-17T16:27:34.618Z\",\n    \"senha\": \"NovaSenha1!\",\n    \"funcao\": \"Client\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Buscar Token",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"tiagomarques@gmail.com\",\r\n  \"senha\": \"NovaSenha1!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7169/api/user/login",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7169",
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "exemplo de retorno",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"tiagomarques@gmail.com\",\r\n  \"senha\": \"NovaSenha1!\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7169/api/user/login",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7169",
+									"path": [
+										"api",
+										"user",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 18 Nov 2023 16:44:52 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"email\": \"tiagomarques@gmail.com\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6InRpYWdvbWFycXVlc0BnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJDbGllbnQiLCJleHAiOjE3MDAzMzMwOTIsImlzcyI6Ik1ldUNhbXBlb25hdG8iLCJhdWQiOiJDbGllbnQifQ.ugLZYq0aJHjqvo2GhnjJJJqi1h-GTJ9F4B8llkoxTAk\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Buscar User Por Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6InRpYWdvbWFycXVlc0BnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJDbGllbnQiLCJleHAiOjE3MDAzMzMwOTIsImlzcyI6Ik1ldUNhbXBlb25hdG8iLCJhdWQiOiJDbGllbnQifQ.ugLZYq0aJHjqvo2GhnjJJJqi1h-GTJ9F4B8llkoxTAk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "1",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7169/api/user/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7169",
+							"path": [
+								"api",
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Exemplo de retorno de usuario",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "1",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7169/api/user/1",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7169",
+									"path": [
+										"api",
+										"user",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 18 Nov 2023 17:01:09 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"nomeCompleto\": \"Tiago Marques\",\n    \"email\": \"tiagomarques@gmail.com\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Buscar Todos Usuarios",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": [
+						{
+							"name": "Exemplo de retorno de todos usuarios",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://localhost:7169/api/user",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7169",
+									"path": [
+										"api",
+										"user"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 18 Nov 2023 17:06:16 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"nomeCompleto\": \"Tiago Marques\",\n        \"email\": \"tiagomarques@gmail.com\"\n    },\n    {\n        \"id\": 2,\n        \"nomeCompleto\": \"Tiago Lucas\",\n        \"email\": \"tiagoLucas@gmail.com\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Delete Usuario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6InRpYWdvbWFycXVlc0BnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJDbGllbnQiLCJleHAiOjE3MDA0MjI0NzcsImlzcyI6Ik1ldUNhbXBlb25hdG8iLCJhdWQiOiJDbGllbnQifQ.XmC8FK9O0Zb_cKksuDAED8TrNlSeAPUpa0e_33lTvMA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7169/api/user?id=3",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7169",
+							"path": [
+								"api",
+								"user"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Usuario",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7169/api/user?id=3",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7169",
+									"path": [
+										"api",
+										"user"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 17:44:20 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Atualizar user email",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6InRpYWdvbWFycXVlc0BnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJDbGllbnQiLCJleHAiOjE3MDA0MjI0NzcsImlzcyI6Ik1ldUNhbXBlb25hdG8iLCJhdWQiOiJDbGllbnQifQ.XmC8FK9O0Zb_cKksuDAED8TrNlSeAPUpa0e_33lTvMA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 2,\r\n  \"email\": \"tiagolucas@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7169/api/user/Atualizar",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7169",
+							"path": [
+								"api",
+								"user",
+								"Atualizar"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Atualizar user email",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 2,\r\n  \"email\": \"tiagolucas@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7169/api/user/Atualizar",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7169",
+									"path": [
+										"api",
+										"user",
+										"Atualizar"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 18:05:33 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Time",
+			"item": [
+				{
+					"name": "Criar Time",
+					"request": {
+						"method": "POST",
+						"header": []
+					},
+					"response": [
+						{
+							"name": "Retorno",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 0,\r\n  \"nomeTime\": \"Londrina Futebol CLub\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7169/api/times",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7169",
+									"path": [
+										"api",
+										"times"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 18:23:28 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Location",
+									"value": "https://localhost:7169/api/times/16"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"nomeTime\": \"Londrina Futebol CLub\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Buscar Todos os Times",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": [
+						{
+							"name": "Exemplo de retorno da busca de todos os times",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7169/api/times",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7169",
+									"path": [
+										"api",
+										"times"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 18:40:42 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"timeId\": 1,\n        \"nomeTime\": \"Palmeiras\",\n        \"dataInscricao\": \"2023-11-16T18:10:01.387\"\n    },\n    {\n        \"timeId\": 2,\n        \"nomeTime\": \"Atlético Mineiro\",\n        \"dataInscricao\": \"2023-11-15T18:10:01.387\"\n    },\n    {\n        \"timeId\": 3,\n        \"nomeTime\": \"Fortaleza\",\n        \"dataInscricao\": \"2023-11-14T18:10:01.387\"\n    },\n    {\n        \"timeId\": 4,\n        \"nomeTime\": \"Athletico Paranaense\",\n        \"dataInscricao\": \"2023-11-13T18:10:01.387\"\n    },\n    {\n        \"timeId\": 5,\n        \"nomeTime\": \"Flamengo\",\n        \"dataInscricao\": \"2023-11-12T18:10:01.387\"\n    },\n    {\n        \"timeId\": 6,\n        \"nomeTime\": \"Ceará\",\n        \"dataInscricao\": \"2023-11-11T18:10:01.387\"\n    },\n    {\n        \"timeId\": 7,\n        \"nomeTime\": \"Fluminense\",\n        \"dataInscricao\": \"2023-11-10T18:10:01.387\"\n    },\n    {\n        \"timeId\": 8,\n        \"nomeTime\": \"Santos\",\n        \"dataInscricao\": \"2023-11-09T18:10:01.387\"\n    },\n    {\n        \"timeId\": 9,\n        \"nomeTime\": \"Atlético Goianiense\",\n        \"dataInscricao\": \"2023-11-08T18:10:01.387\"\n    },\n    {\n        \"timeId\": 10,\n        \"nomeTime\": \"Corinthians\",\n        \"dataInscricao\": \"2023-11-07T18:10:01.387\"\n    },\n    {\n        \"timeId\": 11,\n        \"nomeTime\": \"Internacional\",\n        \"dataInscricao\": \"2023-11-06T18:10:01.387\"\n    },\n    {\n        \"timeId\": 12,\n        \"nomeTime\": \"Juventude\",\n        \"dataInscricao\": \"2023-11-05T18:10:01.387\"\n    },\n    {\n        \"timeId\": 13,\n        \"nomeTime\": \"Bahia\",\n        \"dataInscricao\": \"2023-11-04T18:10:01.387\"\n    },\n    {\n        \"timeId\": 14,\n        \"nomeTime\": \"São Paulo\",\n        \"dataInscricao\": \"2023-11-03T18:10:01.387\"\n    },\n    {\n        \"timeId\": 15,\n        \"nomeTime\": \"Bragantino\",\n        \"dataInscricao\": \"2023-11-02T18:10:01.387\"\n    },\n    {\n        \"timeId\": 16,\n        \"nomeTime\": \"Londrina Futebol CLub\",\n        \"dataInscricao\": \"2023-11-19T15:23:10.0249887\"\n    },\n    {\n        \"timeId\": 17,\n        \"nomeTime\": \"Londrina Futebol CLub\",\n        \"dataInscricao\": \"2023-11-19T15:27:27.9567022\"\n    },\n    {\n        \"timeId\": 18,\n        \"nomeTime\": \"Londrina Futebol CLub\",\n        \"dataInscricao\": \"2023-11-19T15:28:13.3079004\"\n    },\n    {\n        \"timeId\": 19,\n        \"nomeTime\": \"Londrina Futebol CLub\",\n        \"dataInscricao\": \"2023-11-19T15:28:34.7279646\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Buscar Time por Id",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": [
+						{
+							"name": "Exemplo de retorno da busca por Id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7169/api/times/18",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7169",
+									"path": [
+										"api",
+										"times",
+										"18"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 18:43:00 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"timeId\": 18,\n    \"nomeTime\": \"Londrina Futebol CLub\",\n    \"dataInscricao\": \"2023-11-19T15:28:13.3079004\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Time",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6InRpYWdvbWFycXVlc0BnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJDbGllbnQiLCJleHAiOjE3MDA0Mjc3NjMsImlzcyI6Ik1ldUNhbXBlb25hdG8iLCJhdWQiOiJDbGllbnQifQ.En86RgXc0E9jgQL-UgdnXaFAb2udRcvDlkfWtlrPhhU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7169/api/times?id=19",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7169",
+							"path": [
+								"api",
+								"times"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "19"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "exemplo de retorno",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7169/api/times?id=19",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7169",
+									"path": [
+										"api",
+										"times"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "19"
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 19:19:50 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Atualizar Nome do Time",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7169/api/times",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7169",
+							"path": [
+								"api",
+								"times"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "exemplo de retorno",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 18,\r\n  \"nameTime\": \"Brazil\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7169/api/times/AtualizarNomeTime",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7169",
+									"path": [
+										"api",
+										"times",
+										"AtualizarNomeTime"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 19:31:31 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Campeonato",
+			"item": [
+				{
+					"name": "Buscar todos os Campeonatos",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": [
+						{
+							"name": "exemplo de retorno de todos os campeonatos",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7169/api/compeonato",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7169",
+									"path": [
+										"api",
+										"compeonato"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 19:43:11 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"campeonatoId\": 1,\n        \"nomeComapeonato\": \"COPA 2023\",\n        \"dataCampeonato\": \"2023-11-17T03:00:36.5998447\",\n        \"primeiroLugar\": \"Bahia\",\n        \"segundoLugar\": \"Fortaleza\",\n        \"terceiroLugar\": \"Ceará\",\n        \"quantoLugar\": \"Corinthians\"\n    },\n    {\n        \"campeonatoId\": 2,\n        \"nomeComapeonato\": \"Campeonato de Futebol 2023\",\n        \"dataCampeonato\": \"2023-11-17T10:30:06.4108571\",\n        \"primeiroLugar\": \"Cruzeiro\",\n        \"segundoLugar\": \"Corinthians\",\n        \"terceiroLugar\": \"Sport\",\n        \"quantoLugar\": \"Grêmio\"\n    },\n    {\n        \"campeonatoId\": 3,\n        \"nomeComapeonato\": \"Campeonato de Futebol 2024\",\n        \"dataCampeonato\": \"2023-11-17T10:32:42.679852\",\n        \"primeiroLugar\": \"Atlético Mineiro\",\n        \"segundoLugar\": \"São Paulo\",\n        \"terceiroLugar\": \"Palmeiras\",\n        \"quantoLugar\": \"Internacional\"\n    },\n    {\n        \"campeonatoId\": 4,\n        \"nomeComapeonato\": \"Campeonato de Futebol 2023\",\n        \"dataCampeonato\": \"2023-11-17T10:43:12.7403477\",\n        \"primeiroLugar\": \"Corinthians\",\n        \"segundoLugar\": \"Fortaleza\",\n        \"terceiroLugar\": \"Cruzeiro\",\n        \"quantoLugar\": \"Atlético Mineiro\"\n    },\n    {\n        \"campeonatoId\": 5,\n        \"nomeComapeonato\": \"Campeonato de Futebol 2023\",\n        \"dataCampeonato\": \"2023-11-17T10:46:05.7966155\",\n        \"primeiroLugar\": \"Corinthians\",\n        \"segundoLugar\": \"Grêmio\",\n        \"terceiroLugar\": \"Cruzeiro\",\n        \"quantoLugar\": \"São Paulo\"\n    },\n    {\n        \"campeonatoId\": 6,\n        \"nomeComapeonato\": \"Campeonato de Futebol Seria A 2023\",\n        \"dataCampeonato\": \"2023-11-17T11:06:07.3280269\",\n        \"primeiroLugar\": \"Palmeiras\",\n        \"segundoLugar\": \"Botafogo\",\n        \"terceiroLugar\": \"Fortaleza\",\n        \"quantoLugar\": \"Flamengo\"\n    },\n    {\n        \"campeonatoId\": 7,\n        \"nomeComapeonato\": \"Campeonato de Futebol Seria A 2023\",\n        \"dataCampeonato\": \"2023-11-17T14:22:10.9703894\",\n        \"primeiroLugar\": \"Flamengo\",\n        \"segundoLugar\": \"Palmeiras\",\n        \"terceiroLugar\": \"Cruzeiro\",\n        \"quantoLugar\": \"Internacional\"\n    },\n    {\n        \"campeonatoId\": 8,\n        \"nomeComapeonato\": \"Campeonato de Futebol Seria C 2023\",\n        \"dataCampeonato\": \"2023-11-17T14:27:04.7283505\",\n        \"primeiroLugar\": \"Palmeiras\",\n        \"segundoLugar\": \"Atlético Mineiro\",\n        \"terceiroLugar\": \"Vasco\",\n        \"quantoLugar\": \"Fluminense\"\n    },\n    {\n        \"campeonatoId\": 9,\n        \"nomeComapeonato\": \"Campeonato de Futebol Seria A 2023\",\n        \"dataCampeonato\": \"2023-11-18T02:16:54.1545917\",\n        \"primeiroLugar\": \"Atlético Mineiro\",\n        \"segundoLugar\": \"Cruzeiro\",\n        \"terceiroLugar\": \"Internacional\",\n        \"quantoLugar\": \"Palmeiras\"\n    },\n    {\n        \"campeonatoId\": 10,\n        \"nomeComapeonato\": \"Campeonato de Futebol Seria A 2023\",\n        \"dataCampeonato\": \"2023-11-18T02:19:34.6247773\",\n        \"primeiroLugar\": \"São Paulo\",\n        \"segundoLugar\": \"Flamengo\",\n        \"terceiroLugar\": \"Grêmio\",\n        \"quantoLugar\": \"Atlético Mineiro\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Buscar Por Id",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": [
+						{
+							"name": "Buscar campeonato por Id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7169/api/compeonato/1",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7169",
+									"path": [
+										"api",
+										"compeonato",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 19:50:57 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"campeonatoId\": 1,\n    \"nomeComapeonato\": \"COPA 2023\",\n    \"dataCampeonato\": \"2023-11-17T03:00:36.5998447\",\n    \"primeiroLugar\": \"Bahia\",\n    \"segundoLugar\": \"Fortaleza\",\n    \"terceiroLugar\": \"Ceará\",\n    \"quantoLugar\": \"Corinthians\"\n}"
+						}
+					]
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
