@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using MeuCampeonato.Core.Repositories;
+using MeuCampeonato.Core.Interface.Repositories;
 
 namespace MeuCampeonato.Application.Commands.User.AtualizarUser
 {

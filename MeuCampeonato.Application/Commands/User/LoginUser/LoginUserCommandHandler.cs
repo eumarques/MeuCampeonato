@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using MeuCampeonato.Application.Services;
 using MeuCampeonato.Application.ViewModels.User;
-using MeuCampeonato.Core.Repositories;
+using MeuCampeonato.Core.Interface.Repositories;
 
 namespace MeuCampeonato.Application.Commands.User.LoginUser
 {

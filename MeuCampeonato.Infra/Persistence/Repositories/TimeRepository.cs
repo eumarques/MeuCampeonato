@@ -1,5 +1,5 @@
 ﻿using MeuCampeonato.Core.Entities;
-using MeuCampeonato.Core.Repositories;
+using MeuCampeonato.Core.Interface.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace MeuCampeonato.Infra.Persistence.Repositories

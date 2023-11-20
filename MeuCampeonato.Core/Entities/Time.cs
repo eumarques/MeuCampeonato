@@ -29,5 +29,10 @@
         {
             Pontuacao -= pontuacao;
         }
+
+        public DateTime RetornarDataInscricao()
+        {
+            return DataInscricao.AddDays(-1);
+        }
     }
 }

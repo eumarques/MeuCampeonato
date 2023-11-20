@@ -1,7 +1,6 @@
 ﻿using MediatR;
 using MeuCampeonato.Application.ViewModels.User;
-using MeuCampeonato.Core.Entities;
-using MeuCampeonato.Core.Repositories;
+using MeuCampeonato.Core.Interface.Repositories;
 
 namespace MeuCampeonato.Application.Queries.User.BuscarTodos
 {

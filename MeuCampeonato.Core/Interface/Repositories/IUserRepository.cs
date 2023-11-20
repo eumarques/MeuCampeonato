@@ -1,6 +1,6 @@
 ﻿using MeuCampeonato.Core.Entities;
 
-namespace MeuCampeonato.Core.Repositories
+namespace MeuCampeonato.Core.Interface.Repositories
 {
     public interface IUserRepository
     {

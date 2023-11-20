@@ -1,6 +1,8 @@
 ﻿using MediatR;
 using MeuCampeonato.Application.Services;
-using MeuCampeonato.Core.Repositories;
+using MeuCampeonato.Core.Interface.Repositories;
+using UserEntity = MeuCampeonato.Core.Entities.User;
+
 
 namespace MeuCampeonato.Application.Commands.User.CriarUser
 {
@@ -19,7 +21,7 @@ namespace MeuCampeonato.Application.Commands.User.CriarUser
         {
             var passwordHash = _authService.ComputeSha256Hash(request.Senha);
 
-            var user = new Core.Entities.User(request.NomeCompleto, request.Email, request.DataNascimento, passwordHash, request.Funcao);
+            var user = new UserEntity(request.NomeCompleto, request.Email, request.DataNascimento, passwordHash, request.Funcao);
 
             await _userRepository.AdicionarAsync(user);
             return user.Id;

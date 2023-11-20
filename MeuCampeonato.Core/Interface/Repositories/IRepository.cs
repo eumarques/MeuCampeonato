@@ -1,4 +1,4 @@
-﻿namespace MeuCampeonato.Core.Repositories
+﻿namespace MeuCampeonato.Core.Interface.Repositories
 {
     public interface IRepository<T>
     {

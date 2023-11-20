@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using MeuCampeonato.Application.Queries.BuscarTime.BuscarTimePorId;
 using MeuCampeonato.Application.ViewModels.Time;
-using MeuCampeonato.Core.Repositories;
+using MeuCampeonato.Core.Interface.Repositories;
 
 namespace MeuCampeonato.Application.Queries.Time.BuscarTimePorId
 {
