@@ -47,8 +47,7 @@ namespace MeuCampeonato.API.Controllers
 
 
         [HttpPost("IniciarCampeonato")]
-        [AllowAnonymous]
-        //[Authorize(Roles = "Client")]
+        [Authorize(Roles = "Client")]
         public async Task<IActionResult> Post([FromBody] SimularCampeonatoCommand command)
         {
             var campeonatoId = await _mediator.Send(command);
